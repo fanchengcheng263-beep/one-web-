@@ -1,0 +1,2278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f5f0e8;
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #faf7f2 0%, #f0ebe3 50%, #e8e0d5 100%);
+}
+
+/* 背景层 */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+}
+
+.bg-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 顶部装饰层 */
+.top-deco-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.top-deco-layer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 漂浮装饰层 */
+.float-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.float-item {
+  position: absolute;
+  background: url('images/界面1/漂浮装饰系统.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  filter: blur(0.5px);
+}
+
+.float-1 {
+  width: 80px;
+  height: 80px;
+  top: 15%;
+  left: 8%;
+}
+
+.float-2 {
+  width: 60px;
+  height: 60px;
+  top: 25%;
+  right: 12%;
+}
+
+.float-3 {
+  width: 70px;
+  height: 70px;
+  top: 60%;
+  left: 5%;
+}
+
+.float-4 {
+  width: 55px;
+  height: 55px;
+  top: 45%;
+  right: 8%;
+}
+
+.float-5 {
+  width: 65px;
+  height: 65px;
+  top: 75%;
+  right: 15%;
+}
+
+/* 今日小贴士层 */
+.tips-layer {
+  position: absolute;
+  right: 3px;
+  top: 5%;
+  width: 380px;
+  z-index: 35;
+  opacity: 0;
+}
+
+.tips-layer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 便签层 */
+.note-layer {
+  position: absolute;
+  left: 0px;
+  top: -5%;
+  width: 500px;
+  z-index: 35;
+  opacity: 0;
+}
+
+.note-layer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 挂牌层 */
+.sign-layer {
+  position: absolute;
+  top: 0px;
+  left: 42px;
+  width: 240px;
+  z-index: 30;
+  opacity: 0;
+  animation: signSway 3s ease-in-out infinite;
+}
+
+@keyframes signSway {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+
+.sign-layer img {
+  width: 100%;
+  height: auto;
+}
+
+/* 医生主体层 */
+.doctor-layer {
+  position: absolute;
+  left: 50%;
+  top: 460px;
+  transform: translateX(-50%);
+  width: 80vw;
+  max-width: 800px;
+  z-index: 50;
+  opacity: 0;
+}
+
+.doctor-layer img {
+  width: 100%;
+  height: auto;
+}
+
+/* 木桌前景层 */
+.desk-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 40;
+  opacity: 0;
+}
+
+.desk-layer img {
+  width: 100%;
+  height: auto;
+}
+
+.desk-light {
+  position: absolute;
+  top: 20%;
+  left: 45%;
+  width: 200px;
+  height: 150px;
+  background: radial-gradient(ellipse at center, rgba(255, 248, 230, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* 询问名字气泡 */
+.bubble-layer {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 115%;
+  z-index: 71;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bubble-layer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 输入框层 */
+.input-layer {
+  position: absolute;
+  left: 50%;
+  bottom: -80px;
+  transform: translateX(-50%);
+  width: 78%;
+  z-index: 90;
+  opacity: 0;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.name-input {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-46%, -50%);
+  width: 68%;
+  height: auto;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  color: #5c4a3d;
+  text-align: center;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.name-input::placeholder {
+  color: rgba(92, 74, 61, 0.4);
+  text-align: center;
+}
+
+/* 按钮层 */
+.button-layer {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+  width: 58%;
+  z-index: 95;
+  opacity: 0;
+}
+
+.start-btn {
+  width: 100%;
+  height: auto;
+  background: transparent !important;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.start-btn img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* 文案层 */
+.copy-layer {
+  position: absolute;
+  left: 50%;
+  top: 90px;
+  transform: translateX(-50%);
+  width: 88%;
+  z-index: 55;
+  opacity: 0;
+}
+
+.copy-layer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 标题文字层 */
+.title-layer {
+  position: absolute;
+  left: 45%;
+  top: 170px;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 60;
+  opacity: 0;
+}
+
+.main-title {
+  font-size: 44px;
+  color: #5c4a3d;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  font-weight: 300;
+  letter-spacing: 6px;
+  margin-bottom: 12px;
+  white-space: nowrap;
+}
+
+.sub-title {
+  font-size: 20px;
+  color: rgba(92, 74, 61, 0.6);
+  font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  letter-spacing: 4px;
+}
+
+/* 响应式适配 */
+@media screen and (max-width: 480px) {
+  .sign-layer {
+    top: 5px;
+    left: 24px;
+    width: 160px;
+  }
+
+  .doctor-layer {
+    top: 260px;
+    width: 70vw;
+  }
+
+  .input-layer {
+    bottom: 0px;
+    width: 85%;
+    z-index: 90;
+  }
+
+  .bubble-layer {
+    width: 120%;
+    bottom: 20px;
+  }
+
+  .name-input {
+    font-size: 20px;
+    width: 68%;
+    top: 60%;
+    transform: translate(-46%, -50%);
+  }
+
+  .button-layer {
+    bottom: 50px;
+    width: 65%;
+  }
+
+  .copy-layer {
+    top: 90px;
+    width: 90%;
+  }
+
+  .title-layer {
+    top: 90px;
+  }
+
+  .main-title {
+    font-size: 34px;
+    letter-spacing: 4px;
+    white-space: nowrap;
+  }
+
+  .sub-title {
+    font-size: 16px;
+    letter-spacing: 3px;
+  }
+}
+
+/* ==================== 界面2 样式 ==================== */
+.scene2 {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s2-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+
+  height: 100%;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  /* 依然给一个高度，防止父容器塌陷 */
+}
+
+/* 问题1装饰 */
+.s2-question-deco {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  transform: translateX(-50%);
+  width: 180%;
+  z-index: 210;
+  opacity: 0;
+  /* 新增居中代码 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.s2-question-deco img {
+  width: 20%;
+
+}
+
+.top {
+
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+
+
+.s2-person {
+  width: 70%;
+  height: 100%
+}
+
+.s2-person img {
+  width: 100%;
+
+
+}
+
+.s2-question-text {
+  width: 30%;
+  height: 100%
+}
+
+.s2-question-text img {
+  width: 80%;
+  margin-top: 20%;
+}
+
+/* ==================== 提示词文字区域 ==================== */
+.text {
+  width: 100%;
+  /* 让区域正常显示，不被隐藏 */
+  position: relative;
+  z-index: 210;
+  /* 垂直居中内部图片 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+.tip1,
+.tip2 {
+  width: 100%;
+  /* 图片居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.tip1 {
+  margin-top: -25%;
+}
+
+.tip2 {
+  margin-top: -5%;
+  margin-bottom: 8%;
+}
+
+
+.tip1 img,
+.tip2 img {
+  /* 最大宽度 80%，保持美观不拉伸 */
+  max-width: 80%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ==================== 选项统一布局 ==================== */
+
+.options {
+  width: 100%;
+  margin-top: -10%;
+
+}
+
+.s2-option-1,
+.s2-option-2,
+.s2-option-3 {
+
+  width: 80%;
+  /* 宽度 80% */
+  margin-left: 10%;
+  cursor: pointer;
+
+  margin-bottom: 1%;
+
+}
+
+.s2-option-1 img,
+.s2-option-2 img,
+.s2-option-3 img {
+  width: 100%;
+  height: auto;
+
+}
+
+/* 继续按钮样式 */
+.continue {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  /* 根据设计调整宽度 */
+
+  z-index: 250;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.continue img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 显示状态 */
+.continue.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==================== 底部固定元素 ==================== */
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.bottom img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==================== 界面3 样式 ==================== */
+.scene3 {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: left center;
+  perspective: 1200px;
+}
+
+.s3-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.s3-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 人物层样式 */
+.s3-person {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  transform: translate(-50%, 0);
+  width: 100%;
+  z-index: 306;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.s3-person img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.s3-person-selected {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  /* 初始隐藏，点击时显示 */
+}
+
+/* 问题2装饰层样式 */
+.s3-question-deco {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  width: 40%;
+  z-index: 307;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s3-question-deco img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 问题文字层样式 */
+.s3-question-text {
+  position: absolute;
+  left: 70%;
+  top: 20%;
+  transform: translateX(-10%);
+  width: 18%;
+  z-index: 307;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s3-question-text img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 选项容器样式 */
+.s3-options {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 308;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  /* 统一间距 */
+  pointer-events: none;
+}
+
+.s3-option-item {
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+}
+
+.s3-opt-selected {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  /* 初始隐藏 */
+  pointer-events: none;
+}
+
+/* 提示词图案样式 */
+.s3-tip-pattern {
+  position: absolute;
+  left: 50%;
+  top: 72%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 308;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s3-tip-pattern img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 各选项提示词图案独立位置 */
+#s3-tip-pattern-2 {
+  top: 62%;
+}
+
+#s3-tip-pattern-3 {
+  top: 72%;
+}
+
+/* 继续键样式 */
+.s3-continue {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  width: 50%;
+  z-index: 309;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.s3-continue img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.s3-option-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+/* 窗帘层样式 */
+.s3-curtain1,
+.s3-curtain2 {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 310;
+}
+
+.s3-curtain1 {
+  opacity: 1;
+  /* 初始显示 */
+}
+
+.s3-curtain2 {
+  opacity: 0;
+  /* 初始隐藏 */
+}
+
+.s3-curtain1 img,
+.s3-curtain2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==================== 界面4 样式 ==================== */
+.scene4 {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 400;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: left center;
+  /* 翻书轴心 */
+}
+
+.s4-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.s4-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 问题3装饰层 */
+.s4-question-deco {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  width: 40%;
+  z-index: 410;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s4-question-deco img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 人物层 */
+.s4-person {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  transform: translate(-50%, 0);
+  width: 100%;
+  z-index: 411;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.s4-person img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 问题文字层 */
+.s4-question-text {
+  position: absolute;
+  left: 25%;
+  top: 15%;
+  transform: translateX(-10%);
+  width: 55%;
+  z-index: 412;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s4-question-text img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 选项容器 */
+.s4-options {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 413;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.s4-option-item {
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+}
+
+.s4-option-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+/* 选中态图片（覆盖在默认图上） */
+.s4-opt-selected {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 环形进度条 */
+.progress-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.progress-ring-bg {
+  fill: none;
+}
+
+.progress-ring-fill {
+  fill: none;
+  transform-origin: center;
+  transform: rotate(-90deg);
+}
+
+/* 选中选项提示词图案 */
+.s4-tip-pattern {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translateX(-50%);
+  width: 70%;
+  z-index: 414;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s4-tip-pattern img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 单独调整选中选项3提示词图案 */
+#s4-tip-pattern-3 {
+  top: 58%;
+  width: 58%;
+}
+
+/* 长按选择提示词 */
+.s4-tip-hold {
+  position: absolute;
+  left: 50%;
+  top: 91%;
+  transform: translateX(-50%);
+  width: 60%;
+  z-index: 414;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s4-tip-hold img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 继续键 */
+.s4-continue {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  width: 50%;
+  z-index: 415;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.s4-continue img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==================== 界面5 样式 ==================== */
+.scene5 {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.s5-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 问题4装饰层 */
+.s5-question-deco {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  width: 40%;
+  z-index: 510;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-question-deco img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 底部装饰 */
+.s5-bottom-deco {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 511;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-bottom-deco img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 顶部便签 */
+.s5-top-note {
+  position: absolute;
+  right: -5px;
+  top: 3%;
+  width: 90px;
+  z-index: 512;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: top center;
+}
+
+.s5-top-note img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 便签持续摆动 */
+@keyframes noteSwing {
+  0% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+/* 人物层 */
+.s5-person {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  width: 55%;
+  z-index: 513;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.s5-person img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 人物选中态（覆盖在默认图上） */
+.s5-person-selected {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 光柱效果 */
+.s5-light-pillar {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  background: radial-gradient(ellipse at center, rgba(255, 240, 180, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 星光粒子容器 */
+.s5-sparkles {
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+}
+
+/* 单个星光粒子 */
+.s5-sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ffe9a0;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px #ffda6b;
+  pointer-events: none;
+}
+
+/* 问题文字层 */
+.s5-question-text {
+  position: absolute;
+  left: 27%;
+  top: 10%;
+  transform: translateX(-10%);
+  width: 60%;
+  z-index: 514;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-question-text img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 底部白云通用样式 */
+.s5-cloud {
+  position: absolute;
+  width: 28%;
+  z-index: 515;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-cloud img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 红玫瑰白云 */
+#s5-cloud-rose {
+  left: 0%;
+  bottom: 23%;
+  width: 38%;
+}
+
+/* 白色球鞋白云 */
+#s5-cloud-shoe {
+  left: 62%;
+  bottom: 23%;
+  width: 38%;
+}
+
+/* 积木白云 */
+#s5-cloud-block {
+  left: 30%;
+  bottom: 13%;
+  width: 44%;
+}
+
+/* 物品通用样式 */
+.s5-item {
+  position: absolute;
+  z-index: 516;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 红玫瑰（在白云上方） */
+#s5-item-rose {
+  left: 7%;
+  bottom: 23%;
+  width: 25%;
+}
+
+/* 白色球鞋（在白云上方） */
+#s5-item-shoe {
+  left: 38%;
+  bottom: 16%;
+  width: 26%;
+}
+
+/* 积木（在白云上方） */
+#s5-item-block {
+  left: 67%;
+  bottom: 28%;
+  width: 28%;
+}
+
+/* 问题提示气泡 */
+.s5-bubble {
+  position: absolute;
+  left: 63%;
+  top: 22%;
+  width: 30%;
+  z-index: 517;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-bubble img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 拖动提示键 */
+.s5-drag-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  width: 52%;
+  z-index: 518;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-drag-hint img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 标签通用样式 */
+.s5-label {
+  position: absolute;
+  z-index: 516;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-label img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 红玫瑰标签（白云下方） */
+#s5-label-rose {
+  left: 7%;
+  bottom: 22%;
+  width: 23%;
+}
+
+/* 白色球鞋标签 */
+#s5-label-shoe {
+  left: 38%;
+  bottom: 12%;
+  width: 25%;
+}
+
+/* 积木标签 */
+#s5-label-block {
+  left: 68%;
+  bottom: 23%;
+  width: 23%;
+}
+
+/* 选中提示词（和气泡位置一致） */
+.s5-select-tip {
+  position: absolute;
+  left: 63%;
+  top: 22%;
+  width: 30%;
+  z-index: 517;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-select-tip img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 继续键（和拖动键位置一致） */
+.s5-continue {
+  position: absolute;
+  left: 47%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  width: 72%;
+  z-index: 518;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.s5-continue img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 选中选项提示词图案 */
+.s5-tip-pattern {
+  position: absolute;
+  left: 50%;
+  top: 67%;
+  transform: translateX(-50%);
+  width: 70%;
+  z-index: 519;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s5-tip-pattern img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==================== 界面6 样式 ==================== */
+.scene6 {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 600;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.s6-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 魔法阵光效 */
+.s6-magic-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 120, 0.6) 0%, rgba(255, 180, 60, 0.3) 40%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 问题5装饰层 */
+.s6-question-deco {
+  position: absolute;
+  left: 48%;
+  top: 5%;
+  transform: translateX(-50%);
+  width: 40%;
+  z-index: 610;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-question-deco img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 问题文字层 */
+.s6-question-text {
+  position: absolute;
+  left: 22%;
+  top: 12%;
+  transform: translateX(-10%);
+  width: 70%;
+  z-index: 611;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-question-text img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 人物层 */
+.s6-person {
+  position: absolute;
+  left: 40%;
+  top: 25%;
+  transform: translate(-50%, 0);
+  width: 65%;
+  z-index: 612;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.s6-person img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 问题提示气泡 */
+.s6-bubble {
+  position: absolute;
+  left: 60%;
+  top: 26%;
+  width: 30%;
+  z-index: 613;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-bubble img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 物品通用样式 */
+.s6-item {
+  position: absolute;
+  z-index: 614;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 披风 */
+#s6-item-cape {
+  left: 0%;
+  bottom: 20%;
+  width: 34%;
+}
+
+/* 任意门 */
+#s6-item-door {
+  left: 33%;
+  bottom: 16%;
+  width: 34%;
+}
+
+/* 摩天轮 */
+#s6-item-wheel {
+  left: 65%;
+  bottom: 22%;
+  width: 33%;
+}
+
+/* 标签通用 */
+.s6-label {
+  position: absolute;
+  z-index: 615;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-label img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 披风标签 */
+#s6-label-cape {
+  left: 5%;
+  bottom: 19%;
+  width: 25%;
+}
+
+/* 任意门标签 */
+#s6-label-door {
+  left: 37%;
+  bottom: 16%;
+  width: 26%;
+}
+
+/* 摩天轮标签 */
+#s6-label-wheel {
+  left: 69%;
+  bottom: 20%;
+  width: 26%;
+}
+
+/* 点击魔法键 */
+.s6-magic-key {
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  transform: translateX(-50%);
+  width: 60%;
+  z-index: 616;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.s6-magic-key img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 选中人物姿态（初始隐藏） */
+.s6-person-selected {
+  position: absolute;
+  transform: translate(-50%, 0);
+  z-index: 612;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-person-selected img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 披风选中人物 */
+#s6-person-cape {
+  left: 50%;
+  top: 29%;
+  width: 68%;
+}
+
+/* 任意门选中人物 */
+#s6-person-door {
+  left: 50%;
+  top: 29%;
+  width: 58%;
+}
+
+/* 摩天轮选中人物 */
+#s6-person-wheel {
+  left: 48%;
+  top: 30%;
+  width: 75%;
+}
+
+/* 披风气泡 */
+.s6-cape-bubble {
+  position: absolute;
+  left: 6%;
+  top: 30%;
+  width: 30%;
+  z-index: 613;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-cape-bubble img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 披风提示词（位置和大小跟魔法键一致） */
+.s6-cape-tooltip {
+  position: absolute;
+  left: 47%;
+  bottom: 15%;
+  transform: translateX(-50%);
+  width: 68%;
+  z-index: 616;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-cape-tooltip img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 任意门气泡 */
+.s6-door-bubble {
+  position: absolute;
+  left: 60%;
+  top: 28%;
+  width: 30%;
+  z-index: 613;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-door-bubble img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 任意门提示词 */
+.s6-door-tooltip {
+  position: absolute;
+  left: 47%;
+  bottom: 15%;
+  transform: translateX(-50%);
+  width: 68%;
+  z-index: 616;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-door-tooltip img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 摩天轮气泡 */
+.s6-wheel-bubble {
+  position: absolute;
+  left: 60%;
+  top: 26%;
+  width: 30%;
+  z-index: 613;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-wheel-bubble img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 摩天轮提示词 */
+.s6-wheel-tooltip {
+  position: absolute;
+  left: 48%;
+  bottom: 16%;
+  transform: translateX(-50%);
+  width: 70%;
+  z-index: 616;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-wheel-tooltip img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 暗屏遮罩 */
+.s6-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 700;
+  pointer-events: none;
+}
+
+/* gif视频容器 */
+.s6-gif-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 750;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-gif-container img {
+  display: block;
+}
+
+/* 上滑提示 */
+.s6-swipe-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  z-index: 620;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.s6-swipe-hint span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  letter-spacing: 2px;
+}
+
+.s6-swipe-arrow {
+  width: 24px;
+  height: 24px;
+  border-left: 2px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  transform: rotate(135deg);
+  animation: swipeBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes swipeBounce {
+
+  0%,
+  100% {
+    transform: rotate(135deg) translate(0, 0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: rotate(135deg) translate(-6px, -6px);
+    opacity: 1;
+  }
+}
+
+/* ==================== 界面7 样式 ==================== */
+
+/* 【界面7容器】不要改 */
+.scene7 {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 700;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 【界面7背景图】不要改 */
+.s7-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.s7-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 【拼图容器】不要改 */
+.s7-puzzle {
+  position: absolute;
+  inset: 0;
+  z-index: 701;
+}
+
+/* 【拼图碎片】不要改 */
+.s7-tile {
+  position: absolute;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  will-change: transform, opacity;
+}
+
+/* 【内容层-整体布局容器】不要改 */
+.s7-content {
+  position: absolute;
+  inset: 0;
+  z-index: 702;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 【过渡加载页标签】
+   大小：width
+   水平位置：left
+   垂直位置：bottom
+   img对应：images/界面7/过渡加载页标签.png
+*/
+.s7-label {
+  position: absolute;
+  left: 50%;
+  bottom: 91%;
+  width: 40%;
+  transform: translateX(-50%);
+}
+
+.s7-label img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 【疗愈方案生成中提示词】
+   大小：width
+   水平位置：left
+   垂直位置：bottom
+   img对应：images/界面7/疗愈方案生成中提示词.png
+*/
+.s7-title {
+  position: absolute;
+  left: 50%;
+  bottom: 80%;
+  width: 87%;
+  transform: translateX(-50%);
+}
+
+.s7-title img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 【进度条容器】
+   大小：width
+   水平位置：left
+   垂直位置：bottom
+*/
+.s7-progress {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 73%;
+  transform: translateX(-50%);
+}
+
+/* 玻璃管轨道 */
+.progress-track {
+  position: relative;
+  width: 100%;
+  height: 28px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.05),
+    0 0 12px rgba(100, 180, 255, 0.15);
+  overflow: hidden;
+}
+
+/* 发光液体填充层 */
+.progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #3a8fd4, #5bb8f0, #7dd3e8, #c8a8e9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: width 0.1s linear;
+}
+
+/* 液面波光 */
+.progress-wave {
+  position: absolute;
+  right: -4px;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 0 14px 14px 0;
+  filter: blur(3px);
+  animation: wavePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes wavePulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    width: 10px;
+  }
+
+  50% {
+    opacity: 0.8;
+    width: 16px;
+  }
+}
+
+/* 液体表面光丝 */
+.progress-glow {
+  position: absolute;
+  left: 10%;
+  top: 3px;
+  width: 50%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 3px;
+  filter: blur(2px);
+}
+
+/* 百分比数字 */
+.progress-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(100, 180, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+/* 【正在分析你的情绪】
+   大小：width
+   水平位置：left
+   垂直位置：bottom
+   img对应：images/界面7/正在分析你的情绪.png
+*/
+.s7-status {
+  position: absolute;
+  left: 47%;
+  bottom: 23%;
+  width: 65%;
+  transform: translateX(-50%);
+}
+
+.s7-status img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 【整理情绪档案】
+   大小：width
+   水平位置：left
+   垂直位置：bottom
+   img对应：images/界面7/整理情绪档案.png
+*/
+.s7-archives {
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
+  width: 55%;
+  transform: translateX(-50%);
+}
+
+.s7-archives img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 【暖心提示词】
+   大小：width
+   水平位置：left
+   垂直位置：bottom
+   img对应：images/界面7/暖心提示词.png
+*/
+.s7-warm-tip {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: 80%;
+  transform: translateX(-50%);
+}
+
+.s7-warm-tip img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==================== 界面8 样式 ==================== */
+.scene8 {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 800;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #0d0d1a 100%);
+}
+
+/* 双手容器 */
+.s8-hands {
+  position: absolute;
+  bottom: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 801;
+  display: flex;
+  gap: 60px;
+  opacity: 0;
+}
+
+/* 单只手 — 光晕椭圆模拟掌心 */
+.s8-hand {
+  width: 90px;
+  height: 110px;
+  border-radius: 45% 45% 50% 50%;
+  background: radial-gradient(ellipse at center,
+      rgba(255, 200, 120, 0.7) 0%,
+      rgba(255, 180, 80, 0.35) 40%,
+      rgba(255, 150, 50, 0.08) 70%,
+      transparent 100%);
+  box-shadow:
+    0 0 30px rgba(255, 200, 100, 0.5),
+    0 0 80px rgba(255, 180, 60, 0.2);
+  filter: blur(1px);
+}
+
+/* 卷轴容器 */
+.s8-scroll {
+  position: absolute;
+  left: 50%;
+  top: 6%;
+  transform: translateX(-50%);
+  width: 85%;
+  z-index: 802;
+  opacity: 0;
+}
+
+/* 卷轴横杆 */
+.s8-scroll-rod {
+  width: 110%;
+  height: 8px;
+  margin-left: -5%;
+  border-radius: 4px;
+  background: linear-gradient(180deg,
+      rgba(200, 160, 100, 0.9) 0%,
+      rgba(160, 120, 60, 0.7) 40%,
+      rgba(120, 80, 30, 0.8) 60%,
+      rgba(160, 120, 60, 0.7) 100%);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(200, 150, 80, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+/* 报告内容 — 用 clip-path 控制展开 */
+.s8-scroll-inner {
+  width: 100%;
+  overflow: hidden;
+  clip-path: inset(0 0 100% 0);
+}
+
+.s8-scroll-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 用户名手写层 — 叠在报告图上面，公共样式 */
+.s8-name {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* 报告A — 名字位置 */
+.s8-name-A {
+  left: 67%;
+  top: 28%;
+}
+
+/* 报告B — 名字位置 */
+.s8-name-B {
+  left: 67%;
+  top: 24%;
+}
+
+/* 报告C — 名字位置 */
+.s8-name-C {
+  left: 67%;
+  top: 25%;
+}
+
+/* 报告D — 名字位置 */
+.s8-name-D {
+  left: 67%;
+  top: 26%;
+}
+
+.s8-name svg {
+  display: block;
+}
+
+.s8-name text {
+  font-family: 'Ma Shan Zheng', 'STXingkai', 'KaiTi', cursive;
+}
+
+/* 粒子 */
+.s8-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 803;
+  pointer-events: none;
+}
+
+.s8-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffd890;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px #ffc060;
+  pointer-events: none;
+}
+
+/* 保存键 */
+.s8-save {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  width: 45%;
+  z-index: 804;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.s8-save img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==================== 全局背景音乐按钮 ==================== */
+.bgm-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  z-index: 9999;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 音符 */
+.bgm-note {
+  position: relative;
+  z-index: 2;
+  font-size: 22px;
+  color: #c8a862;
+  text-shadow: 0 0 8px rgba(200, 168, 98, 0.5);
+  transition: color 0.35s, text-shadow 0.35s;
+}
+
+/* 声波弧线 */
+.bgm-wave {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  border: 1.5px solid rgba(200, 168, 98, 0.6);
+  border-left: none;
+  border-radius: 0 60% 60% 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bgm-wave-1 {
+  width: 22px;
+  height: 18px;
+  margin-top: -9px;
+  animation: bgmWave1 1.6s ease-out infinite;
+}
+
+.bgm-wave-2 {
+  width: 34px;
+  height: 28px;
+  margin-top: -14px;
+  animation: bgmWave2 1.6s ease-out 0.4s infinite;
+}
+
+@keyframes bgmWave1 {
+  0% { opacity: 0; transform: scale(0.6); }
+  40% { opacity: 0.55; }
+  100% { opacity: 0; transform: scale(1.4); }
+}
+
+@keyframes bgmWave2 {
+  0% { opacity: 0; transform: scale(0.6); }
+  40% { opacity: 0.4; }
+  100% { opacity: 0; transform: scale(1.35); }
+}
+
+/* 静音斜线 */
+.bgm-mute-line {
+  position: absolute;
+  z-index: 3;
+  width: 2px;
+  height: 26px;
+  background: #c8a862;
+  border-radius: 1px;
+  transform: rotate(-45deg) scale(0);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* ===== 静音状态 ===== */
+.bgm-btn.muted .bgm-note {
+  color: rgba(180, 180, 180, 0.7);
+  text-shadow: none;
+}
+.bgm-btn.muted .bgm-wave {
+  animation: none;
+  opacity: 0;
+}
+.bgm-btn.muted .bgm-mute-line {
+  transform: rotate(-45deg) scale(1);
+}

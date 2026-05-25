@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>疗愈诊疗室</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+    <!-- ==================== 界面1 ==================== -->
+    <div class="scene" id="scene1">
+        <!-- 背景层 -->
+        <div class="bg-layer">
+            <img src="images/界面1/背景图.png" alt="背景">
+        </div>
+
+        <!-- 顶部装饰层 -->
+        <div class="top-deco-layer">
+            <img src="images/界面1/漂浮装饰系统.png" alt="顶部装饰">
+        </div>
+
+        <!-- 漂浮装饰层 -->
+        <div class="float-layer">
+            <div class="float-item float-1"></div>
+            <div class="float-item float-2"></div>
+            <div class="float-item float-3"></div>
+            <div class="float-item float-4"></div>
+            <div class="float-item float-5"></div>
+        </div>
+
+        <!-- 今日小贴士层 -->
+        <div class="tips-layer">
+            <img src="images/界面1/今日小贴士.png" alt="今日小贴士">
+        </div>
+
+        <!-- 便签层 -->
+        <div class="note-layer">
+            <img src="images/界面1/便签.png" alt="便签">
+        </div>
+
+        <!-- 挂牌层 -->
+        <div class="sign-layer">
+            <img src="images/界面1/左上角诊疗室挂牌.png" alt="诊疗室挂牌">
+        </div>
+
+        <!-- 医生主体层 -->
+        <div class="doctor-layer">
+            <img src="images/界面1/doctor.png" alt="医生" id="doctor-anim">
+        </div>
+
+        <!-- 木桌前景层 -->
+        <div class="desk-layer">
+            <img src="images/界面1/空间锚点素材.png" alt="木桌">
+            <div class="desk-light"></div>
+        </div>
+
+        <!-- 输入框层 -->
+        <div class="input-layer">
+            <!-- 询问名字气泡 -->
+            <div class="bubble-layer">
+                <img src="images/界面1/询问名字气泡.png" alt="询问名字气泡">
+            </div>
+            <div class="input-wrapper">
+                <img src="images/界面1/输入框底板.png" alt="输入框底板">
+                <input type="text" placeholder="请输入您的名字..." class="name-input">
+            </div>
+        </div>
+
+        <!-- 按钮层 -->
+        <div class="button-layer">
+            <button class="start-btn" id="start-btn">
+                <img src="images/界面1/开始按钮.png" alt="开始按钮">
+            </button>
+        </div>
+
+        <!-- 文案层 -->
+        <div class="copy-layer">
+            <img src="images/界面1/文案.png" alt="文案">
+        </div>
+    </div>
+
+
+    <!-- ==================== 界面2 ==================== -->
+    <div class="scene2" id="scene2">
+        <!-- 背景图 -->
+        <div class="s2-bg">
+            <img src="images/界面2/背景图.png" alt="界面2背景">
+        </div>
+
+        <div class="header">
+            <div class="s2-question-deco">
+                <img src="images/界面2/问题1.png" alt="问题1">
+            </div>
+
+        </div>
+
+
+
+        <div class="top">
+            <div class="s2-person">
+                <img src="images/界面2/未选择时人物姿态.png" alt="人物">
+            </div>
+            <!-- 问题文字 -->
+            <div class="s2-question-text">
+                <img src="images/界面2/问题文字.png" alt="问题文字">
+            </div>
+
+        </div>
+        <div class="text">
+            <div class="tip1">
+                <img src="images/界面2/选中选项1提示词图案.png" alt="">
+            </div>
+            <div class="tip2">
+                <img src="images/界面2/选中选项1提示词文字.png" alt="">
+            </div>
+
+        </div>
+
+
+        <!-- 选项1 -->
+        <div class="options">
+            <div class="s2-option-1">
+                <img src="images/界面2/选项1.png" alt="选项1">
+            </div>
+
+            <!-- 选项2 -->
+            <div class="s2-option-2">
+                <img src="images/界面2/选项2.png" alt="选项2">
+            </div>
+
+            <!-- 选项3 -->
+            <div class="s2-option-3">
+                <img src="images/界面2/选项3.png" alt="选项3">
+            </div>
+        </div>
+
+        <div class="continue">
+            <img src="images/界面2/继续键.png" alt="">
+
+        </div>
+        <div class="bottom" id="swipe-area">
+            <img src="images/界面2/底部上划.png" alt="">
+        </div>
+    </div>
+
+
+    <!-- ==================== 界面3 ==================== -->
+    <div class="scene3" id="scene3">
+        <!-- 背景图 -->
+        <div class="s3-bg">
+            <img src="images/界面3/背景图.png" alt="界面3背景">
+        </div>
+
+        <!-- 人物层（窗帘拉开后显示） -->
+        <div class="s3-person" id="s3-person">
+            <img class="s3-person-default" src="images/界面3/未选择时人物姿态.png" alt="人物">
+            <img class="s3-person-selected" id="s3-person-opt1" src="images/界面3/选中选项1人物姿态.png" alt="选中选项1人物">
+            <img class="s3-person-selected" id="s3-person-opt2" src="images/界面3/选中选项2人物姿态.png" alt="选中选项2人物">
+            <img class="s3-person-selected" id="s3-person-opt3" src="images/界面3/选中选项3人物姿态.png" alt="选中选项3人物">
+        </div>
+
+        <!-- 问题2装饰层 -->
+        <div class="s3-question-deco" id="s3-question-deco">
+            <img src="images/界面3/问题2.png" alt="问题2">
+        </div>
+
+        <!-- 问题文字层 -->
+        <div class="s3-question-text" id="s3-question-text">
+            <img src="images/界面3/问题文字.png" alt="问题文字">
+        </div>
+
+        <!-- 选项容器 -->
+        <div class="s3-options" id="s3-options">
+            <div class="s3-option-item" id="s3-option1">
+                <img class="s3-opt-default" src="images/界面3/选项1.png" alt="选项1">
+                <img class="s3-opt-selected" src="images/界面3/选中选项1.png" alt="选中选项1">
+            </div>
+            <div class="s3-option-item" id="s3-option2">
+                <img class="s3-opt-default" src="images/界面3/选项2.png" alt="选项2">
+                <img class="s3-opt-selected" src="images/界面3/选中选项2.png" alt="选中选项2">
+            </div>
+            <div class="s3-option-item" id="s3-option3">
+                <img class="s3-opt-default" src="images/界面3/选项3.png" alt="选项3">
+                <img class="s3-opt-selected" src="images/界面3/选中选项3.png" alt="选中选项3">
+            </div>
+        </div>
+
+        <!-- 选中选项1提示词图案 -->
+        <div class="s3-tip-pattern" id="s3-tip-pattern-1">
+            <img src="images/界面3/选中选项1提示词图案.png" alt="提示词图案1">
+        </div>
+
+        <!-- 选中选项2提示词图案 -->
+        <div class="s3-tip-pattern" id="s3-tip-pattern-2">
+            <img src="images/界面3/选中选项2提示词图案.png" alt="提示词图案2">
+        </div>
+
+        <!-- 选中选项3提示词图案 -->
+        <div class="s3-tip-pattern" id="s3-tip-pattern-3">
+            <img src="images/界面3/选中选项3提示词图案.png" alt="提示词图案3">
+        </div>
+
+        <!-- 继续键 -->
+        <div class="s3-continue" id="s3-continue">
+            <img src="images/界面3/继续键.png" alt="继续键">
+        </div>
+
+        <!-- 窗帘2层（第二层，初始隐藏） -->
+        <div class="s3-curtain2" id="curtain2">
+            <img src="images/界面3/窗帘2.png" alt="窗帘2">
+        </div>
+
+        <!-- 窗帘1层（顶层，初始显示） -->
+        <div class="s3-curtain1" id="curtain1">
+            <img src="images/界面3/窗帘1.png" alt="窗帘1">
+        </div>
+    </div>
+
+
+    <!-- ==================== 界面4 ==================== -->
+    <div class="scene4" id="scene4">
+        <!-- 背景图 -->
+        <div class="s4-bg">
+            <img src="images/界面4/背景图.png" alt="界面4背景">
+        </div>
+
+        <!-- 问题3装饰层 -->
+        <div class="s4-question-deco" id="s4-question-deco">
+            <img src="images/界面4/问题3.png" alt="问题3">
+        </div>
+
+        <!-- 人物层 -->
+        <div class="s4-person" id="s4-person">
+            <img src="images/界面4/未选择时人物姿态.png" alt="人物">
+        </div>
+
+        <!-- 问题文字层 -->
+        <div class="s4-question-text" id="s4-question-text">
+            <img src="images/界面4/问题文字.png" alt="问题文字">
+        </div>
+
+        <!-- 选项容器 -->
+        <div class="s4-options" id="s4-options">
+            <div class="s4-option-item" id="s4-option1">
+                <img class="s4-opt-default" src="images/界面4/选项1.png" alt="选项1">
+                <img class="s4-opt-selected" src="images/界面4/选中选项1.png" alt="选中选项1">
+                <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-ring-bg" cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+                    <circle class="progress-ring-fill" cx="50" cy="50" r="44" fill="none" stroke="#f0c060" stroke-width="3" stroke-dasharray="276" stroke-dashoffset="276" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="s4-option-item" id="s4-option2">
+                <img class="s4-opt-default" src="images/界面4/选项2.png" alt="选项2">
+                <img class="s4-opt-selected" src="images/界面4/选中选项2.png" alt="选中选项2">
+                <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-ring-bg" cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+                    <circle class="progress-ring-fill" cx="50" cy="50" r="44" fill="none" stroke="#f0c060" stroke-width="3" stroke-dasharray="276" stroke-dashoffset="276" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="s4-option-item" id="s4-option3">
+                <img class="s4-opt-default" src="images/界面4/选项3.png" alt="选项3">
+                <img class="s4-opt-selected" src="images/界面4/选中选项3.png" alt="选中选项3">
+                <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-ring-bg" cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+                    <circle class="progress-ring-fill" cx="50" cy="50" r="44" fill="none" stroke="#f0c060" stroke-width="3" stroke-dasharray="276" stroke-dashoffset="276" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 选中选项提示词图案 -->
+        <div class="s4-tip-pattern" id="s4-tip-pattern-1">
+            <img src="images/界面4/选中选项1提示词图案.png" alt="提示词1">
+        </div>
+        <div class="s4-tip-pattern" id="s4-tip-pattern-2">
+            <img src="images/界面4/选中选项2提示词图案.png" alt="提示词2">
+        </div>
+        <div class="s4-tip-pattern" id="s4-tip-pattern-3">
+            <img src="images/界面4/选中选项3提示词图案.png" alt="提示词3">
+        </div>
+
+        <!-- 继续键 -->
+        <div class="s4-continue" id="s4-continue">
+            <img src="images/界面4/继续键.png" alt="继续键">
+        </div>
+
+        <!-- 长按选择提示词 -->
+        <div class="s4-tip-hold" id="s4-tip-hold">
+            <img src="images/界面4/长按选择提示词.png" alt="长按选择提示词">
+        </div>
+    </div>
+
+
+    <!-- ==================== 界面5 ==================== -->
+    <div class="scene5" id="scene5">
+        <!-- 背景图 -->
+        <div class="s5-bg">
+            <img src="images/界面5/背景图.png" alt="界面5背景">
+        </div>
+
+        <!-- 问题4装饰层 -->
+        <div class="s5-question-deco" id="s5-question-deco">
+            <img src="images/界面5/问题4.png" alt="问题4">
+        </div>
+
+        <!-- 底部装饰 -->
+        <div class="s5-bottom-deco" id="s5-bottom-deco">
+            <img src="images/界面5/底部装饰.png" alt="底部装饰">
+        </div>
+
+        <!-- 顶部便签 -->
+        <div class="s5-top-note" id="s5-top-note">
+            <img src="images/界面5/顶部便签.png" alt="顶部便签">
+        </div>
+
+        <!-- 人物层 -->
+        <div class="s5-person" id="s5-person">
+            <img class="s5-person-default" src="images/界面5/未选择时人物姿态.png" alt="人物">
+            <img class="s5-person-selected" id="s5-person-opt1" src="images/界面5/选中选项1人物姿态.png" alt="选中选项1人物">
+            <img class="s5-person-selected" id="s5-person-opt2" src="images/界面5/选中选项2人物姿态.png" alt="选中选项2人物">
+            <img class="s5-person-selected" id="s5-person-opt3" src="images/界面5/选中选项3人物姿态.png" alt="选中选项3人物">
+            <!-- 光柱和星光容器 -->
+            <div class="s5-light-pillar" id="s5-light-pillar"></div>
+            <div class="s5-sparkles" id="s5-sparkles"></div>
+        </div>
+
+        <!-- 问题文字层 -->
+        <div class="s5-question-text" id="s5-question-text">
+            <img src="images/界面5/问题文字.png" alt="问题文字">
+        </div>
+
+        <!-- 红玫瑰底部白云 -->
+        <div class="s5-cloud" id="s5-cloud-rose">
+            <img src="images/界面5/红玫瑰底部的白云.png" alt="红玫瑰白云">
+        </div>
+
+        <!-- 白色球鞋底部白云 -->
+        <div class="s5-cloud" id="s5-cloud-shoe">
+            <img src="images/界面5/白色球鞋底部的白云.png" alt="白色球鞋白云">
+        </div>
+
+        <!-- 积木底部白云 -->
+        <div class="s5-cloud" id="s5-cloud-block">
+            <img src="images/界面5/积木底部的白云.png" alt="积木白云">
+        </div>
+
+        <!-- 红玫瑰 -->
+        <div class="s5-item" id="s5-item-rose">
+            <img src="images/界面5/红玫瑰.png" alt="红玫瑰">
+        </div>
+
+        <!-- 白色球鞋 -->
+        <div class="s5-item" id="s5-item-shoe">
+            <img src="images/界面5/白色球鞋.png" alt="白色球鞋">
+        </div>
+
+        <!-- 积木 -->
+        <div class="s5-item" id="s5-item-block">
+            <img src="images/界面5/积木.png" alt="积木">
+        </div>
+
+        <!-- 红玫瑰标签 -->
+        <div class="s5-label" id="s5-label-rose">
+            <img src="images/界面5/红玫瑰标签.png" alt="红玫瑰标签">
+        </div>
+
+        <!-- 白色球鞋标签 -->
+        <div class="s5-label" id="s5-label-shoe">
+            <img src="images/界面5/白色球鞋标签.png" alt="白色球鞋标签">
+        </div>
+
+        <!-- 积木标签 -->
+        <div class="s5-label" id="s5-label-block">
+            <img src="images/界面5/积木标签.png" alt="积木标签">
+        </div>
+
+        <!-- 问题提示气泡 -->
+        <div class="s5-bubble" id="s5-bubble">
+            <img src="images/界面5/问题提示气泡.png" alt="问题提示气泡">
+        </div>
+
+        <!-- 拖动提示键 -->
+        <div class="s5-drag-hint" id="s5-drag-hint">
+            <img src="images/界面5/拖动提示键.png" alt="拖动提示键">
+        </div>
+
+        <!-- 选中选项提示词图案 -->
+        <div class="s5-tip-pattern" id="s5-tip-pattern-1">
+            <img src="images/界面5/选中选项1提示词图案.png" alt="提示词1">
+        </div>
+        <div class="s5-tip-pattern" id="s5-tip-pattern-2">
+            <img src="images/界面5/选中选项2提示词图案.png" alt="提示词2">
+        </div>
+        <div class="s5-tip-pattern" id="s5-tip-pattern-3">
+            <img src="images/界面5/选中选项3提示词图案.png" alt="提示词3">
+        </div>
+
+        <!-- 选中提示词（替换气泡） -->
+        <div class="s5-select-tip" id="s5-select-tip">
+            <img src="images/界面5/选中提示词.png" alt="选中提示词">
+        </div>
+
+        <!-- 继续键（替换拖动键） -->
+        <div class="s5-continue" id="s5-continue">
+            <img src="images/界面5/继续键.png" alt="继续键">
+        </div>
+    </div>
+
+
+    <!-- ==================== 界面6 ==================== -->
+    <div class="scene6" id="scene6">
+        <!-- 背景图 -->
+        <div class="s6-bg">
+            <img src="images/界面6/背景图.png" alt="界面6背景">
+        </div>
+
+        <!-- 问题5装饰层 -->
+        <div class="s6-question-deco" id="s6-question-deco">
+            <img src="images/界面6/问题5.png" alt="问题5">
+        </div>
+
+        <!-- 问题文字层 -->
+        <div class="s6-question-text" id="s6-question-text">
+            <img src="images/界面6/问题文字.png" alt="问题文字">
+        </div>
+
+        <!-- 人物层 -->
+        <div class="s6-person" id="s6-person">
+            <img src="images/界面6/未选择时人物姿态.png" alt="人物">
+        </div>
+
+        <!-- 问题提示气泡 -->
+        <div class="s6-bubble" id="s6-bubble">
+            <img src="images/界面6/问题提示气泡.png" alt="问题提示气泡">
+        </div>
+
+        <!-- 未选中时的披风 -->
+        <div class="s6-item" id="s6-item-cape">
+            <img src="images/界面6/未选中时的披风.png" alt="披风">
+        </div>
+
+        <!-- 未选中时的任意门 -->
+        <div class="s6-item" id="s6-item-door">
+            <img src="images/界面6/未选中时的任意门.png" alt="任意门">
+        </div>
+
+        <!-- 未选中时的摩天轮 -->
+        <div class="s6-item" id="s6-item-wheel">
+            <img src="images/界面6/未选中时的摩天轮.png" alt="摩天轮">
+        </div>
+
+        <!-- 披风标签 -->
+        <div class="s6-label" id="s6-label-cape">
+            <img src="images/界面6/披风标签.png" alt="披风标签">
+        </div>
+
+        <!-- 任意门标签 -->
+        <div class="s6-label" id="s6-label-door">
+            <img src="images/界面6/任意门标签.png" alt="任意门标签">
+        </div>
+
+        <!-- 摩天轮标签 -->
+        <div class="s6-label" id="s6-label-wheel">
+            <img src="images/界面6/摩天轮标签.png" alt="摩天轮标签">
+        </div>
+
+        <!-- 点击魔法键 -->
+        <div class="s6-magic-key" id="s6-magic-key">
+            <img src="images/界面6/点击魔法键.png" alt="点击魔法键">
+        </div>
+
+        <!-- 魔法阵光效 -->
+        <!-- 选中披风人物姿态 -->
+        <div class="s6-person-selected" id="s6-person-cape">
+            <img src="images/界面6/选中披风时人物姿态.png" alt="选中披风人物">
+        </div>
+
+        <!-- 披风气泡 -->
+        <div class="s6-cape-bubble" id="s6-cape-bubble">
+            <img src="images/界面6/披风气泡.png" alt="披风气泡">
+        </div>
+
+        <!-- 披风提示词 -->
+        <div class="s6-cape-tooltip" id="s6-cape-tooltip">
+            <img src="images/界面6/披风提示词.png" alt="披风提示词">
+        </div>
+
+        <!-- 选中任意门人物姿态 -->
+        <div class="s6-person-selected" id="s6-person-door">
+            <img src="images/界面6/选中任意门时人物姿态.png" alt="选中任意门人物">
+        </div>
+
+        <!-- 任意门气泡 -->
+        <div class="s6-door-bubble" id="s6-door-bubble">
+            <img src="images/界面6/任意门气泡.png" alt="任意门气泡">
+        </div>
+
+        <!-- 任意门提示词 -->
+        <div class="s6-door-tooltip" id="s6-door-tooltip">
+            <img src="images/界面6/任意门提示词.png" alt="任意门提示词">
+        </div>
+
+        <!-- 选中摩天轮人物姿态 -->
+        <div class="s6-person-selected" id="s6-person-wheel">
+            <img src="images/界面6/选中摩天轮时人物姿态.png" alt="选中摩天轮人物">
+        </div>
+
+        <!-- 摩天轮气泡 -->
+        <div class="s6-wheel-bubble" id="s6-wheel-bubble">
+            <img src="images/界面6/摩天轮气泡.png" alt="摩天轮气泡">
+        </div>
+
+        <!-- 摩天轮提示词 -->
+        <div class="s6-wheel-tooltip" id="s6-wheel-tooltip">
+            <img src="images/界面6/摩天轮提示词.png" alt="摩天轮提示词">
+        </div>
+
+        <!-- 暗屏遮罩 -->
+        <div class="s6-overlay" id="s6-overlay"></div>
+
+        <!-- gif视频容器 -->
+        <div class="s6-gif-container" id="s6-gif-container">
+            <img src="images/界面6/披风gif视频.gif" alt="披风gif" id="s6-gif-img">
+        </div>
+
+        <!-- 魔法阵光效 -->
+        <div class="s6-magic-circle" id="s6-magic-circle"></div>
+
+        <!-- 上滑提示 -->
+        <div class="s6-swipe-hint" id="s6-swipe-hint">
+            <div class="s6-swipe-arrow"></div>
+            <span>向上滑动</span>
+        </div>
+    </div>
+
+
+    <!-- ==================== 界面7 ==================== -->
+    <div class="scene7" id="scene7">
+        <!-- 背景图（拼图完成后显示） -->
+        <div class="s7-bg" id="s7-bg">
+            <img src="images/界面7/背景图.png" alt="界面7背景">
+        </div>
+
+        <!-- 拼图容器 -->
+        <div class="s7-puzzle" id="s7-puzzle"></div>
+
+        <!-- 内容层 -->
+        <div class="s7-content" id="s7-content">
+            <div class="s7-label">
+                <img src="images/界面7/过渡加载页标签.png" alt="标签">
+            </div>
+            <div class="s7-title">
+                <img src="images/界面7/疗愈方案生成中提示词.png" alt="疗愈方案生成中">
+            </div>
+            <div class="s7-progress" id="s7-progress">
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill">
+                        <div class="progress-wave"></div>
+                        <div class="progress-glow"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">0%</div>
+                </div>
+            </div>
+            <div class="s7-status">
+                <img src="images/界面7/正在分析你的情绪.png" alt="正在分析你的情绪">
+            </div>
+            <div class="s7-archives">
+                <img src="images/界面7/整理情绪档案.png" alt="整理情绪档案">
+            </div>
+            <div class="s7-warm-tip">
+                <img src="images/界面7/暖心提示词.png" alt="暖心提示词">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================== 界面8 ==================== -->
+    <div class="scene8" id="scene8">
+        <!-- 双手容器 -->
+        <div class="s8-hands" id="s8-hands">
+            <div class="s8-hand s8-hand-left"></div>
+            <div class="s8-hand s8-hand-right"></div>
+        </div>
+
+        <!-- 报告卷轴 -->
+        <div class="s8-scroll" id="s8-scroll">
+            <div class="s8-scroll-rod"></div>
+            <div class="s8-scroll-inner" id="s8-scroll-inner">
+                <img src="images/界面8/报告A.png" alt="报告" id="s8-report-img">
+                <!-- 用户名手写层 -->
+                <div class="s8-name" id="s8-name"></div>
+            </div>
+        </div>
+
+        <!-- 光粒子容器 -->
+        <div class="s8-particles" id="s8-particles"></div>
+
+        <!-- 保存键 -->
+        <div class="s8-save" id="s8-save">
+            <img src="images/界面8/报告A保存图片键.png" alt="保存图片" id="s8-save-img">
+        </div>
+    </div>
+
+
+    <!-- 全局背景音乐控制按钮 -->
+    <div class="bgm-btn" id="bgm-btn" title="音乐开关">
+        <span class="bgm-note">♪</span>
+        <span class="bgm-wave bgm-wave-1"></span>
+        <span class="bgm-wave bgm-wave-2"></span>
+        <span class="bgm-mute-line"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
